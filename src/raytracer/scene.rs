@@ -1,19 +1,34 @@
+use serde::{Serialize, Deserialize};
+use std::fs::File;
+use std::io::BufReader;
+use std::io::BufWriter;
+
 use super::shapes::*;
 
 use super::Float3;
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub enum AntiAliasType {
     None,
     SuperSample,
     MonteCarlo,
 }
 
+#[derive(Serialize, Deserialize)]
 pub struct Scene {
+    #[serde(skip_serializing_if = "Vec::is_empty")]
     pub spheres: Vec<Sphere>,
+
+    #[serde(skip_serializing_if = "Vec::is_empty")]
     pub rhombohedrons: Vec<Rhombohedron>,
+
+    #[serde(skip_serializing_if = "Vec::is_empty")]
     pub polygons: Vec<Polygon>,
+
+    #[serde(skip_serializing_if = "Vec::is_empty")]
     pub ellipsoids: Vec<Ellipsoid>,
+
+    #[serde(skip_serializing_if = "Vec::is_empty")]
     pub lights: Vec<Light>,
 
     pub ambient: Float3,
@@ -32,27 +47,18 @@ pub struct Scene {
 }
 
 impl Scene {
-    pub fn new() -> Scene {
-        Scene {
-            spheres: Vec::new(),
-            rhombohedrons: Vec::new(),
-            polygons: Vec::new(),
-            ellipsoids: Vec::new(),
-            lights: Vec::new(),
+    pub fn from_file(filename: &str) -> Scene {
+        let file = File::open(filename).expect("Failed to open file");
+        let reader = BufReader::new(file);
 
-            ambient: Float3::new(0.0, 0.0, 0.0),
-            air_attenuation: Float3::new(1.0, 1.0, 1.0),
+        serde_json::from_reader(reader).expect("Failed to deserialize json")
+    }
 
-            viewport_origin: Float3::new(-0.5, -0.5, 0.0),
-            viewport_x_axis: Float3::new(1.0, 0.0, 0.0),
-            viewport_y_axis: Float3::new(0.0, 1.0, 0.0),
-            eye_position: Float3::new(0.0, 0.0, -1.0),
+    #[allow(dead_code)]
+    pub fn to_file(&self, filename: &str) {
+        let file = File::create(filename).expect("Failed to create file.");
+        let writer = BufWriter::new(file);
 
-            aa_type: AntiAliasType::None,
-            aa_rate: 1,
-
-            width: 800,
-            height: 600,
-        }
+        serde_json::to_writer_pretty(writer, self).expect("Failed to write to file.");
     }
 }

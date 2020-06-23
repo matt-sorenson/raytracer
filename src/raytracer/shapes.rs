@@ -1,9 +1,11 @@
 extern crate nalgebra as na;
 
+use serde::{Serialize, Deserialize};
+
 use super::Float3;
 pub type Float3x3 = na::Matrix3<f64>;
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Material {
     pub diffuse: Float3,
     pub specular_coefficient: f64,
@@ -13,14 +15,13 @@ pub struct Material {
     pub magnetic_permeability: f64,
     pub index_of_refraction: f64,
 }
-
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Ray {
     pub origin: Float3,
     pub direction: Float3,
 }
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Sphere {
     pub center: Float3,
     pub radius: f64,
@@ -28,14 +29,14 @@ pub struct Sphere {
     pub material: Material,
 }
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Plane {
     pub normal: Float3,
     pub point: Float3,
 }
 
 // 'Box'
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Rhombohedron {
     pub planes: [Plane; 6],
 
@@ -43,6 +44,7 @@ pub struct Rhombohedron {
 }
 
 impl Rhombohedron {
+    #[allow(dead_code)]
     pub fn from_corner_and_edges(
         corner: Float3,
         length: Float3,
@@ -82,7 +84,7 @@ impl Rhombohedron {
     }
 }
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Triangle {
     pub vertices: [Float3; 3],
     pub edges: [Float3; 2],
@@ -121,7 +123,7 @@ impl Triangle {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Polygon {
     pub triangles: Vec<Triangle>,
     pub plane: Plane,
@@ -130,6 +132,7 @@ pub struct Polygon {
 }
 
 impl Polygon {
+    #[allow(dead_code)]
     pub fn from_vertices(vertices: Vec<Float3>, material: Material) -> Self {
         let mut triangles = Vec::new();
 
@@ -154,7 +157,7 @@ impl Polygon {
     }
 }
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Ellipsoid {
     pub center: Float3,
     pub inverse: Float3x3,
@@ -164,6 +167,7 @@ pub struct Ellipsoid {
 }
 
 impl Ellipsoid {
+    #[allow(dead_code)]
     pub fn new(center: Float3, semiaxes: [Float3; 3], material: Material) -> Self {
         let m = Float3x3::from_columns(&semiaxes);
 
@@ -174,7 +178,7 @@ impl Ellipsoid {
     }
 }
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Light {
     pub center: Float3,
     pub radius: f64,

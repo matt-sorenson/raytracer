@@ -15,9 +15,11 @@ opt-level = 3
 [dependencies]
 sdl2 = "0.34.1"
 overload = "0.1.1"
-nalgebra = "0.21.1"
+nalgebra = { version = "0.21.1", features = ["serde-serialize"] }
 rand = "0.7.3"
 rand_distr = "0.2.2"
 float-cmp = "0.8.0"
 log = "0.4.8"
 simple_logger = "1.6.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.55"

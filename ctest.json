@@ -1,0 +1,138 @@
+{
+  "spheres": [
+    {
+      "center": [ 0.5, 0.25, -0.5 ],
+      "radius": 0.25,
+      "material": {
+        "diffuse": [ 0.5, 0.7, 0.5 ],
+        "specular_coefficient": 0.3,
+        "specular_power": 70.0,
+        "attenuation": [ 0.0, 0.0, 0.0 ],
+        "electric_permittivity": 1000000.0,
+        "magnetic_permeability": 1.0,
+        "index_of_refraction": 1000.0
+      }
+    }
+  ],
+  "rhombohedrons": [
+    {
+      "planes": [
+        {
+          "normal": [ 0.5000110003630134, -0.0, 0.8660190526287391 ],
+          "point": [ -0.2623, 0.001, -0.7042 ]
+        },
+        {
+          "normal": [ -0.5000110003630134, 0.0, -0.8660190526287391 ],
+          "point": [ -0.3873, 0.001, -0.9207000000000001 ]
+        },
+        {
+          "normal": [ -0.866019052628739, 0.0, 0.5000110003630133 ],
+          "point": [ -0.2623, 0.001, -0.7042 ]
+        },
+        {
+          "normal": [ 0.866019052628739, -0.0, -0.5000110003630133 ],
+          "point": [ 0.3872, 0.001, -1.0792000000000002 ]
+        },
+        {
+          "normal": [ 0.0, -1.0, -0.0 ],
+          "point": [ -0.2623, 0.001, -0.7042 ]
+        },
+        {
+          "normal": [ -0.0, 1.0, 0.0 ],
+          "point": [ -0.2623, 0.751, -0.7042 ]
+        }
+      ],
+      "material": {
+        "diffuse": [ 0.3, 0.3, 0.5 ],
+        "specular_coefficient": 0.8,
+        "specular_power": 20.0,
+        "attenuation": [ 0.5, 0.5, 0.5 ],
+        "electric_permittivity": 2.3716,
+        "magnetic_permeability": 1.0,
+        "index_of_refraction": 1.54
+      }
+    }
+  ],
+  "polygons": [
+    {
+      "triangles": [
+        {
+          "vertices": [
+            [ 1.0, 0.0, 0.0 ],
+            [ 1.0, 0.0, -2.0 ],
+            [ -1.0, 0.0, -2.0 ]
+          ],
+          "edges": [
+            [ 0.0, 0.0, -2.0 ],
+            [ -2.0, 0.0, -2.0 ]
+          ],
+          "normal": [ 0.0, 1.0, 0.0
+          ]
+        },
+        {
+          "vertices": [
+            [ 1.0, 0.0, 0.0 ],
+            [ -1.0, 0.0, -2.0 ],
+            [ -1.0, 0.0, 0.0 ]
+          ],
+          "edges": [
+            [ -2.0, 0.0, -2.0 ],
+            [ -2.0, 0.0, 0.0 ]
+          ],
+          "normal": [ 0.0, 1.0, 0.0 ]
+        }
+      ],
+      "plane": {
+        "normal": [ 0.0, 1.0, 0.0 ],
+        "point": [ 1.0, 0.0, 0.0 ]
+      },
+      "material": {
+        "diffuse": [ 0.6, 0.6, 0.6 ],
+        "specular_coefficient": 0.4,
+        "specular_power": 20.0,
+        "attenuation": [ 0.0, 0.0, 0.0 ],
+        "electric_permittivity": 1000000.0,
+        "magnetic_permeability": 1.0,
+        "index_of_refraction": 1000.0
+      }
+    }
+  ],
+  "ellipsoids": [
+    {
+      "center": [ -0.5, 0.5, -1.5 ],
+      "inverse": [ 4.0, -0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 4.0 ],
+      "inverse_transpose": [ 4.0, 0.0, 0.0, -0.0, 2.0, 0.0, 0.0, 0.0, 4.0 ],
+      "material": {
+        "diffuse": [ 0.7, 0.5, 0.5 ],
+        "specular_coefficient": 0.3,
+        "specular_power": 70.0,
+        "attenuation": [ 0.0, 0.0, 0.0 ],
+        "electric_permittivity": 1000000.0,
+        "magnetic_permeability": 1.0,
+        "index_of_refraction": 1000.0
+      }
+    }
+  ],
+  "lights": [
+    {
+      "center": [ -1.0, 1.0, 0.0 ],
+      "radius": 0.1,
+      "color": [ 1.0, 1.0, 1.0 ]
+    },
+    {
+      "center": [ 0.75, 0.5, 0.0 ],
+      "radius": 0.2,
+      "color": [ 0.8, 0.8, 0.8 ]
+    }
+  ],
+  "ambient": [ 0.0, 0.0, 0.0 ],
+  "air_attenuation": [ 1.0, 1.0, 1.0 ],
+  "viewport_origin": [ 0.0267612, 0.846193, -0.14023 ],
+  "viewport_x_axis": [ 0.343626, -0.274153, 0.238247 ],
+  "viewport_y_axis": [ 0.362222, 0.234501, -0.252595 ],
+  "eye_position": [ 0.0802836, 1.538579, 0.5793090000000001 ],
+  "aa_type": "SuperSample",
+  "aa_rate": 1,
+  "width": 860,
+  "height": 859
+}
