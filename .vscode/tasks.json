@@ -1,0 +1,34 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cargo",
+			"subcommand": "build",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "Rust: cargo build - raytracer"
+		},
+		{
+			"type": "shell",
+			"command": "cargo build --release",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "Rust: cargo build release - raytracer"
+		},
+		{
+			"type": "shell",
+			"command": "cargo run",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"label": "Rust: cargo run release - raytracer"
+		},
+	]
+}
