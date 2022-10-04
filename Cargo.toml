@@ -14,7 +14,7 @@ opt-level = 3
 
 [dependencies]
 sdl2 = { version = "0.34.2", features = ["bundled"] }
-nalgebra = { version = "0.21.1", features = ["serde-serialize"] }
+nalgebra = { version = "0.27.1", features = ["serde-serialize"] }
 rand = "0.7.3"
 rand_distr = "0.2.2"
 float-cmp = "0.8.0"
